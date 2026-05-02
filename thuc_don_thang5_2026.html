@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thực Đơn Tháng 5/2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink-deep: #e8769a;
+    --pink-mid: #f0a0bb;
+    --pink-light: #fce4ee;
+    --pink-pale: #fff0f5;
+    --pink-soft: #ffd6e7;
+    --white: #ffffff;
+    --text-dark: #3a2030;
+    --text-mid: #7a5068;
+    --text-light: #b08898;
+    --border: #f5c0d3;
+    --green-pill: #e8f5e9;
+    --green-text: #2e7d32;
+    --shadow: 0 4px 20px rgba(232,118,154,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: linear-gradient(135deg, #fff0f5 0%, #ffffff 50%, #fce4ee 100%);
+    font-family: 'Nunito', sans-serif;
+    color: var(--text-dark);
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #e8769a 0%, #f0a0bb 60%, #f7c5d8 100%);
+    padding: 48px 40px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '🌸';
+    position: absolute; top: -10px; right: 30px;
+    font-size: 120px; opacity: 0.15;
+  }
+  .hero::after {
+    content: '✿';
+    position: absolute; bottom: -20px; left: 10%;
+    font-size: 80px; opacity: 0.1; color: white;
+  }
+  .hero-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    border: 1.5px solid rgba(255,255,255,0.4);
+    border-radius: 30px;
+    padding: 5px 18px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 5vw, 50px);
+    color: white;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  }
+  .hero-sub { color: rgba(255,255,255,0.88); font-size: 14px; font-weight: 400; }
+
+  /* STATS */
+  .stats {
+    background: var(--white);
+    border-bottom: 2px solid var(--border);
+    padding: 18px 40px;
+    box-shadow: var(--shadow);
+  }
+  .stats-inner {
+    max-width: 900px; margin: 0 auto;
+    display: flex; gap: 28px; flex-wrap: wrap; align-items: center;
+  }
+  .stat {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .stat-icon {
+    width: 38px; height: 38px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px;
+  }
+  .stat-icon.pink { background: var(--pink-light); }
+  .stat-icon.rose { background: #fce4ec; }
+  .stat-icon.blush { background: #ffeef5; }
+  .stat-label { font-size: 10px; color: var(--text-light); text-transform: uppercase; letter-spacing: 1.2px; font-weight: 700; }
+  .stat-val { font-size: 13.5px; font-weight: 800; color: var(--text-dark); }
+
+  /* MAIN */
+  .main { max-width: 900px; margin: 0 auto; padding: 36px 40px 60px; }
+
+  /* TABS */
+  .tab-row { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+  .tab {
+    padding: 9px 22px; border-radius: 30px;
+    border: 2px solid var(--border);
+    background: var(--white);
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px; font-weight: 700;
+    color: var(--text-mid); cursor: pointer;
+    transition: all 0.2s;
+  }
+  .tab:hover { border-color: var(--pink-deep); color: var(--pink-deep); }
+  .tab.active {
+    background: linear-gradient(135deg, var(--pink-deep), var(--pink-mid));
+    border-color: transparent; color: white;
+    box-shadow: 0 4px 14px rgba(232,118,154,0.35);
+  }
+
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* DAY CARD */
+  .day {
+    background: var(--white);
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .day:hover { box-shadow: 0 8px 32px rgba(232,118,154,0.18); transform: translateY(-1px); }
+
+  .day-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, var(--pink-pale), #fff8fb);
+    border-bottom: 2px solid var(--border);
+    cursor: pointer; user-select: none;
+  }
+  .day-left { display: flex; align-items: center; gap: 14px; }
+  .day-num {
+    width: 42px; height: 42px; border-radius: 14px;
+    background: linear-gradient(135deg, var(--pink-deep), var(--pink-mid));
+    color: white; font-weight: 900; font-size: 17px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 12px rgba(232,118,154,0.3);
+  }
+  .day-info {}
+  .day-name { font-weight: 800; font-size: 14.5px; display: flex; align-items: center; gap: 8px; }
+  .badge-tap {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.5px;
+    background: var(--green-pill); color: var(--green-text);
+    border-radius: 10px; padding: 2px 9px;
+  }
+  .badge-walk {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.5px;
+    background: #e3f2fd; color: #1565c0;
+    border-radius: 10px; padding: 2px 9px;
+  }
+  .day-date { font-size: 11.5px; color: var(--text-light); font-weight: 600; margin-top: 2px; }
+  .day-right { display: flex; align-items: center; gap: 10px; }
+  .cal-badge {
+    background: linear-gradient(135deg, var(--pink-light), var(--pink-soft));
+    color: var(--pink-deep); border-radius: 20px;
+    padding: 5px 14px; font-size: 12px; font-weight: 800;
+    border: 1.5px solid var(--border);
+  }
+  .arrow { color: var(--pink-mid); font-size: 11px; transition: transform 0.3s; font-weight: 900; }
+  .day.open .arrow { transform: rotate(180deg); }
+
+  /* DAY BODY */
+  .day-body { display: none; padding: 18px 20px; gap: 12px; flex-direction: column; }
+  .day.open .day-body { display: flex; }
+
+  /* MEAL */
+  .meal { border-radius: 14px; border: 1.5px solid var(--border); overflow: hidden; }
+
+  .meal-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 16px;
+  }
+  .meal-label { display: flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+  .meal-kcal { font-size: 12px; font-weight: 800; }
+
+  .sang .meal-head { background: linear-gradient(135deg, #fff8e1, #fff3e0); }
+  .sang .meal-label { color: #c77700; }
+  .sang .meal-kcal { color: #c77700; }
+
+  .trua .meal-head { background: linear-gradient(135deg, #fce4ee, #ffd6e7); }
+  .trua .meal-label { color: var(--pink-deep); }
+  .trua .meal-kcal { color: var(--pink-deep); }
+
+  .toi .meal-head { background: linear-gradient(135deg, #ede7f6, #e8eaf6); }
+  .toi .meal-label { color: #5e35b1; }
+  .toi .meal-kcal { color: #5e35b1; }
+
+  .meal-body {
+    padding: 12px 16px;
+    font-size: 13.5px; line-height: 1.85;
+    color: var(--text-mid);
+    background: var(--white);
+  }
+  .meal-body .name { font-weight: 800; color: var(--text-dark); display: block; margin-bottom: 4px; }
+  .meal-body .note { font-size: 12px; color: var(--text-light); font-style: italic; }
+
+  /* MACRO ROW */
+  .macro-bar {
+    background: var(--pink-pale);
+    border-top: 1.5px solid var(--border);
+    padding: 12px 20px;
+    display: flex; gap: 18px; flex-wrap: wrap;
+  }
+  .macro-bar span { font-size: 12px; color: var(--text-mid); font-weight: 600; }
+  .macro-bar strong { color: var(--text-dark); font-weight: 800; }
+
+  /* TIPS */
+  .tips-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--text-dark); margin-bottom: 6px; margin-top: 36px;
+  }
+  .tips-sub { font-size: 13px; color: var(--text-light); margin-bottom: 22px; font-weight: 600; }
+  .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  .tip {
+    background: var(--white); border: 2px solid var(--border); border-radius: 16px;
+    padding: 18px; box-shadow: var(--shadow);
+  }
+  .tip-icon { font-size: 22px; margin-bottom: 8px; }
+  .tip-title { font-weight: 800; font-size: 13.5px; color: var(--text-dark); margin-bottom: 5px; }
+  .tip-text { font-size: 12.5px; color: var(--text-mid); line-height: 1.65; font-weight: 500; }
+
+  hr { border: none; border-top: 2px solid var(--border); margin: 30px 0; }
+
+  .section-head {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--text-dark); margin-bottom: 6px;
+  }
+  .section-sub { font-size: 13px; color: var(--text-light); margin-bottom: 24px; font-weight: 600; }
+
+  @media (max-width: 600px) {
+    .hero, .stats, .main { padding-left: 18px; padding-right: 18px; }
+    .stats-inner { gap: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🌸 Kế hoạch dinh dưỡng cá nhân</div>
+    <h1>Thực Đơn Tháng 5<br>2026</h1>
+    <div class="hero-sub">02/05/2026 → 31/05/2026 &nbsp;·&nbsp; Giảm cân + Kháng lực 3 buổi/tuần</div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-icon pink">🔥</div>
+      <div><div class="stat-label">Calo mục tiêu/ngày</div><div class="stat-val">1.200 – 1.250 kcal</div></div>
+    </div>
+    <div class="stat">
+      <div class="stat-icon rose">⚖️</div>
+      <div><div class="stat-label">Thâm hụt ước tính</div><div class="stat-val">~300 kcal/ngày</div></div>
+    </div>
+    <div class="stat">
+      <div class="stat-icon blush">🏋️</div>
+      <div><div class="stat-label">Ngày tập kháng lực</div><div class="stat-val">Thứ 3 · 5 · 7</div></div>
+    </div>
+    <div class="stat">
+      <div class="stat-icon pink">🚶</div>
+      <div><div class="stat-label">Ngày đi bộ nhẹ</div><div class="stat-val">Thứ 2 · 4 · CN</div></div>
+    </div>
+    <div class="stat">
+      <div class="stat-icon rose">🎯</div>
+      <div><div class="stat-label">Mục tiêu giảm</div><div class="stat-val">1 – 1,5 kg/tháng</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="section-head">📅 Thực đơn từng ngày</div>
+  <div class="section-sub">Nhấn vào từng ngày để xem chi tiết · 🏋️ = Ngày tập &nbsp;|&nbsp; 🚶 = Ngày đi bộ</div>
+
+  <div class="tab-row">
+    <button class="tab active" onclick="switchTab('w1',this)">Tuần 1 (2–8/5)</button>
+    <button class="tab" onclick="switchTab('w2',this)">Tuần 2 (9–15/5)</button>
+    <button class="tab" onclick="switchTab('w3',this)">Tuần 3 (16–22/5)</button>
+    <button class="tab" onclick="switchTab('w4',this)">Tuần 4 (23–31/5)</button>
+  </div>
+
+<!-- ===== WEEK 1 ===== -->
+<div class="panel active" id="w1">
+
+  <!-- 02/05 T7 TẬP -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left">
+        <div class="day-num">2</div>
+        <div class="day-info">
+          <div class="day-name">Thứ Bảy <span class="badge-tap">🏋️ Kháng lực + 5.000 bước</span></div>
+          <div class="day-date">02 / 05 / 2026</div>
+        </div>
+      </div>
+      <div class="day-right"><div class="cal-badge">~1.250 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang">
+        <div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~380 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Cháo yến mạch trứng gà kiểu Nhật</span>
+          • Yến mạch 60g nấu sệt<br>
+          • 2 trứng luộc lòng đào<br>
+          • Hành lá + tiêu + chút nước tương
+        </div>
+      </div>
+      <div class="meal trua">
+        <div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~530 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Cơm gạo lứt + Cá hồi áp chảo + Rau cải luộc</span>
+          • Cơm gạo lứt 150g<br>
+          • Cá hồi phi lê 120g áp chảo (tỏi, chanh, dầu olive)<br>
+          • Rau cải xanh luộc 200g
+        </div>
+      </div>
+      <div class="meal toi">
+        <div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~340 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Súp tôm nấu nấm + Salad dầu giấm</span>
+          • Tôm sú 150g nấu nấm kim châm + cà chua<br>
+          • Salad xà lách + dưa leo + cà rốt trộn dầu giấm<br>
+          <span class="note">❌ Không cơm tối</span>
+        </div>
+      </div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.250 kcal</strong></span><span>💪 Protein: <strong>~85g</strong></span><span>🌾 Carb: <strong>~120g</strong></span><span>🥑 Fat: <strong>~34g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 03/05 CN ĐI BỘ -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left">
+        <div class="day-num">3</div>
+        <div class="day-info">
+          <div class="day-name">Chủ Nhật <span class="badge-walk">🚶 Đi bộ 7.000 bước</span></div>
+          <div class="day-date">03 / 05 / 2026</div>
+        </div>
+      </div>
+      <div class="day-right"><div class="cal-badge">~1.200 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang">
+        <div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~360 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Trứng chiên rau + Bánh mì đen + Dâu tây</span>
+          • 2 trứng chiên rau bina dầu olive<br>
+          • 1 lát bánh mì đen 40g<br>
+          • 150g dâu tây
+        </div>
+      </div>
+      <div class="meal trua">
+        <div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~500 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Bún bò nạc tự làm (light)</span>
+          • Bún tươi 120g + thịt bò nạc thái lát 100g<br>
+          • Rau sống: giá đỗ, rau muống, húng<br>
+          • Nước dùng thanh ít mỡ
+        </div>
+      </div>
+      <div class="meal toi">
+        <div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~340 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Thịt lợn rim mắm gừng + Rau muống + Canh bí</span>
+          • Thịt lợn thăn rim mắm gừng 100g<br>
+          • Rau muống xào tỏi 200g<br>
+          • Canh bí đỏ tôm khô 1 bát nhỏ<br>
+          <span class="note">❌ Không cơm tối</span>
+        </div>
+      </div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.200 kcal</strong></span><span>💪 Protein: <strong>~76g</strong></span><span>🌾 Carb: <strong>~120g</strong></span><span>🥑 Fat: <strong>~30g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 04/05 T2 ĐI BỘ -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left">
+        <div class="day-num">4</div>
+        <div class="day-info">
+          <div class="day-name">Thứ Hai <span class="badge-walk">🚶 Đi bộ 7.000 bước</span></div>
+          <div class="day-date">04 / 05 / 2026</div>
+        </div>
+      </div>
+      <div class="day-right"><div class="cal-badge">~1.200 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang">
+        <div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~350 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Overnight oats</span>
+          • Yến mạch 55g ngâm sữa chua không đường 100g<br>
+          • 1/2 chuối + 1 thìa hạt chia
+        </div>
+      </div>
+      <div class="meal trua">
+        <div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~510 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Cơm + Tôm rang sả ớt + Canh cải</span>
+          • Cơm 150g<br>
+          • Tôm rang sả ớt 150g<br>
+          • Canh cải xanh nấu thịt bằm + dưa leo tươi
+        </div>
+      </div>
+      <div class="meal toi">
+        <div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~340 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Salad cá hồi + Trứng bác ớt chuông</span>
+          • Cá hồi nướng 80g trộn salad xà lách + cà chua bi + bơ 30g<br>
+          • Sốt dầu olive chanh<br>
+          • 1 trứng bác ớt chuông<br>
+          <span class="note">❌ Không cơm tối</span>
+        </div>
+      </div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.200 kcal</strong></span><span>💪 Protein: <strong>~80g</strong></span><span>🌾 Carb: <strong>~118g</strong></span><span>🥑 Fat: <strong>~32g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 05/05 T3 TẬP -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left">
+        <div class="day-num">5</div>
+        <div class="day-info">
+          <div class="day-name">Thứ Ba <span class="badge-tap">🏋️ Kháng lực + 5.000 bước</span></div>
+          <div class="day-date">05 / 05 / 2026</div>
+        </div>
+      </div>
+      <div class="day-right"><div class="cal-badge">~1.250 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang">
+        <div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~390 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Yến mạch nấu sữa + Trứng luộc + Hạt óc chó</span>
+          • Yến mạch 60g nấu sữa tươi không đường 200ml<br>
+          • 2 trứng luộc + 5 hạt óc chó
+        </div>
+      </div>
+      <div class="meal trua">
+        <div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~530 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Cơm + Thịt lợn kho tiêu + Đậu cô ve + Canh</span>
+          • Cơm 150g<br>
+          • Thịt lợn thăn kho tiêu 120g<br>
+          • Đậu cô ve xào tỏi 200g + canh rau ngót thịt bằm
+        </div>
+      </div>
+      <div class="meal toi">
+        <div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~330 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Cá hồi hấp sả gừng chanh + Rau củ hấp</span>
+          • Cá hồi 100g hấp sả gừng chanh<br>
+          • Bông cải xanh + cà rốt hấp 200g<br>
+          • Chấm nước mắm pha loãng<br>
+          <span class="note">❌ Không cơm tối</span>
+        </div>
+      </div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.250 kcal</strong></span><span>💪 Protein: <strong>~88g</strong></span><span>🌾 Carb: <strong>~122g</strong></span><span>🥑 Fat: <strong>~33g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 06/05 T4 ĐI BỘ -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left">
+        <div class="day-num">6</div>
+        <div class="day-info">
+          <div class="day-name">Thứ Tư <span class="badge-walk">🚶 Đi bộ 7.000 bước</span></div>
+          <div class="day-date">06 / 05 / 2026</div>
+        </div>
+      </div>
+      <div class="day-right"><div class="cal-badge">~1.200 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang">
+        <div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~350 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Cháo yến mạch mặn thịt lợn bằm</span>
+          • Yến mạch 55g + thịt lợn bằm 60g nấu cùng<br>
+          • Hành lá + gừng + tiêu
+        </div>
+      </div>
+      <div class="meal trua">
+        <div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~510 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Cơm + Canh chua cá hồi + Mồng tơi xào</span>
+          • Cơm 140g<br>
+          • Canh chua cá hồi 120g (cà chua, khóm, giá, rau thơm)<br>
+          • Mồng tơi xào tỏi 200g
+        </div>
+      </div>
+      <div class="meal toi">
+        <div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~340 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Gỏi tôm bưởi + Trứng luộc</span>
+          • Tôm luộc 150g + múi bưởi 100g + rau bạc hà, rau răm<br>
+          • Nước chấm chanh mắm ớt<br>
+          • 1 trứng luộc<br>
+          <span class="note">❌ Không cơm tối</span>
+        </div>
+      </div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.200 kcal</strong></span><span>💪 Protein: <strong>~82g</strong></span><span>🌾 Carb: <strong>~118g</strong></span><span>🥑 Fat: <strong>~28g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 07/05 T5 TẬP -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left">
+        <div class="day-num">7</div>
+        <div class="day-info">
+          <div class="day-name">Thứ Năm <span class="badge-tap">🏋️ Kháng lực + 5.000 bước</span></div>
+          <div class="day-date">07 / 05 / 2026</div>
+        </div>
+      </div>
+      <div class="day-right"><div class="cal-badge">~1.250 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang">
+        <div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~380 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Cháo yến mạch tôm xay</span>
+          • Yến mạch 60g + tôm xay 80g nấu cùng<br>
+          • Hành + tiêu + rau ngò + gừng
+        </div>
+      </div>
+      <div class="meal trua">
+        <div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~540 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Cơm + Thịt lợn kho trứng + Rau xào + Canh bầu</span>
+          • Cơm 150g<br>
+          • Thịt lợn 100g + 1 trứng kho nước dừa<br>
+          • Rau cải xào tỏi 200g + canh bầu thịt bằm
+        </div>
+      </div>
+      <div class="meal toi">
+        <div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~330 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Salad cá hồi flake</span>
+          • Cá hồi nướng flake 80g + xà lách + cà chua bi + dưa chuột<br>
+          • Sốt dầu olive mù tạt chanh<br>
+          <span class="note">❌ Không cơm tối</span>
+        </div>
+      </div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.250 kcal</strong></span><span>💪 Protein: <strong>~90g</strong></span><span>🌾 Carb: <strong>~124g</strong></span><span>🥑 Fat: <strong>~32g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 08/05 T6 ĐI BỘ -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left">
+        <div class="day-num">8</div>
+        <div class="day-info">
+          <div class="day-name">Thứ Sáu <span class="badge-walk">🚶 Đi bộ 7.000 bước</span></div>
+          <div class="day-date">08 / 05 / 2026</div>
+        </div>
+      </div>
+      <div class="day-right"><div class="cal-badge">~1.200 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang">
+        <div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~350 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Trứng ốp la + Bánh mì ngũ cốc + Sữa chua</span>
+          • 2 trứng ốp la dầu olive<br>
+          • 2 lát bánh mì ngũ cốc nướng 60g<br>
+          • Sữa chua Hy Lạp không đường 100g
+        </div>
+      </div>
+      <div class="meal trua">
+        <div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~510 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Cơm + Tôm sú rang sả + Đậu bắp luộc</span>
+          • Cơm 140g<br>
+          • Tôm sú rang sả ớt 150g<br>
+          • Đậu bắp luộc chấm mắm 150g + canh cải thảo
+        </div>
+      </div>
+      <div class="meal toi">
+        <div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~340 kcal</div></div>
+        <div class="meal-body">
+          <span class="name">Thịt lợn xào cải thảo nấm + Trứng luộc</span>
+          • Thịt lợn thăn xào cải thảo + nấm 100g<br>
+          • Canh rau củ nhẹ + 1 trứng luộc<br>
+          <span class="note">❌ Không cơm tối</span>
+        </div>
+      </div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.200 kcal</strong></span><span>💪 Protein: <strong>~80g</strong></span><span>🌾 Carb: <strong>~115g</strong></span><span>🥑 Fat: <strong>~30g</strong></span></div>
+    </div>
+  </div>
+
+</div><!-- /w1 -->
+
+<!-- ===== WEEK 2 ===== -->
+<div class="panel" id="w2">
+
+  <!-- 09/05 T7 TẬP -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">9</div><div class="day-info"><div class="day-name">Thứ Bảy <span class="badge-tap">🏋️ Kháng lực + 5.000 bước</span></div><div class="day-date">09 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.250 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~385 kcal</div></div>
+        <div class="meal-body"><span class="name">Pancake yến mạch trứng</span>• Yến mạch xay 55g + 2 trứng chiên ít dầu<br>• 1 thìa mật ong nhỏ + trà xanh không đường</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~530 kcal</div></div>
+        <div class="meal-body"><span class="name">Phở gà nạc tự nấu (light)</span>• Bánh phở 120g + ức gà luộc xé 120g<br>• Nước dùng gà vớt mỡ + giá + húng + chanh ớt</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~335 kcal</div></div>
+        <div class="meal-body"><span class="name">Trứng hấp tôm kiểu Nhật + Bok choy luộc</span>• 2 trứng hấp + tôm 60g + nước dùng (chawanmushi)<br>• Bok choy luộc 250g chấm nước tương<br><span class="note">❌ Không cơm tối</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.250 kcal</strong></span><span>💪 Protein: <strong>~86g</strong></span><span>🌾 Carb: <strong>~118g</strong></span><span>🥑 Fat: <strong>~34g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 10/05 CN ĐI BỘ -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">10</div><div class="day-info"><div class="day-name">Chủ Nhật <span class="badge-walk">🚶 Đi bộ 7.000 bước</span></div><div class="day-date">10 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.200 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~355 kcal</div></div>
+        <div class="meal-body"><span class="name">Overnight oats + Trứng luộc</span>• Yến mạch 55g ngâm sữa chua + hạt chia 1 thìa + chuối 1/2<br>• 1 trứng luộc ăn kèm</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~505 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm + Canh chua tôm + Rau muống xào</span>• Cơm 140g<br>• Canh chua tôm nấu khóm cà chua<br>• Rau muống xào tỏi 200g</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~340 kcal</div></div>
+        <div class="meal-body"><span class="name">Cá hồi nướng + Rau củ nướng</span>• Cá hồi nướng 90g + bông cải xanh + ớt chuông nướng 200g<br>• Sốt chanh tỏi nhẹ<br><span class="note">❌ Không cơm tối</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.200 kcal</strong></span><span>💪 Protein: <strong>~78g</strong></span><span>🌾 Carb: <strong>~116g</strong></span><span>🥑 Fat: <strong>~30g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 11/05 T2 ĐI BỘ -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">11</div><div class="day-info"><div class="day-name">Thứ Hai <span class="badge-walk">🚶 Đi bộ 7.000 bước</span></div><div class="day-date">11 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.200 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~350 kcal</div></div>
+        <div class="meal-body"><span class="name">Cháo yến mạch cá hồi kiểu Nhật</span>• Yến mạch 55g + cá hồi flake 70g + mè rang + dầu mè + rong biển khô</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~510 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm + Thịt lợn cuộn nấm hấp + Cải bắp luộc</span>• Cơm 140g<br>• Thịt lợn mỏng cuộn nấm hương hấp 120g<br>• Nước chấm gừng chanh mắm + cải bắp luộc 200g</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~340 kcal</div></div>
+        <div class="meal-body"><span class="name">Lẩu thái nhẹ tự nấu</span>• Nước dùng cà chua sả ớt mắm<br>• Tôm 100g + nấm các loại + rau cải<br><span class="note">❌ Không bún, không cơm</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.200 kcal</strong></span><span>💪 Protein: <strong>~80g</strong></span><span>🌾 Carb: <strong>~112g</strong></span><span>🥑 Fat: <strong>~28g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 12/05 T3 TẬP -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">12</div><div class="day-info"><div class="day-name">Thứ Ba <span class="badge-tap">🏋️ Kháng lực + 5.000 bước</span></div><div class="day-date">12 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.250 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~390 kcal</div></div>
+        <div class="meal-body"><span class="name">Smoothie bowl yến mạch + Trứng luộc</span>• Yến mạch xay 50g + sữa 200ml + chuối 1/2 + dâu tây 50g<br>• 2 trứng luộc ăn kèm</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~530 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm gạo lứt + Cá hồi sốt teriyaki nhẹ + Đậu hũ rau</span>• Cơm gạo lứt 150g<br>• Cá hồi 100g sốt teriyaki nhẹ (nước tương, mirin, gừng)<br>• Đậu hũ chiên nhẹ + rau xào 180g</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~330 kcal</div></div>
+        <div class="meal-body"><span class="name">Tôm hấp gừng + Rau xào + Canh</span>• Tôm hấp gừng sả 150g<br>• Rau cải xào tỏi 150g + canh su su nấu thịt bằm<br><span class="note">❌ Không cơm tối</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.250 kcal</strong></span><span>💪 Protein: <strong>~85g</strong></span><span>🌾 Carb: <strong>~120g</strong></span><span>🥑 Fat: <strong>~33g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 13/05 T4 ĐI BỘ -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">13</div><div class="day-info"><div class="day-name">Thứ Tư <span class="badge-walk">🚶 Đi bộ 7.000 bước</span></div><div class="day-date">13 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.200 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~350 kcal</div></div>
+        <div class="meal-body"><span class="name">Trứng cuộn rau + Yến mạch savory</span>• 2 trứng + cải chíp + cà rốt cuộn lại<br>• Yến mạch 50g nấu nước nêm muối nhẹ ăn kèm</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~505 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm + Thịt kho tàu nhẹ + Khổ qua xào</span>• Cơm 140g<br>• Thịt lợn 90g + trứng 1 quả kho nước dừa ít đường<br>• Khổ qua xào 200g</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~345 kcal</div></div>
+        <div class="meal-body"><span class="name">Cá hồi sốt miso nướng + Bông cải + Soup miso</span>• Cá hồi 100g ướp miso trắng nướng lò 200°C 15 phút<br>• Bông cải + nấm shiitake hấp 200g<br>• Soup miso đậu hũ rong biển<br><span class="note">❌ Không cơm tối</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.200 kcal</strong></span><span>💪 Protein: <strong>~82g</strong></span><span>🌾 Carb: <strong>~114g</strong></span><span>🥑 Fat: <strong>~30g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 14/05 T5 TẬP -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">14</div><div class="day-info"><div class="day-name">Thứ Năm <span class="badge-tap">🏋️ Kháng lực + 5.000 bước</span></div><div class="day-date">14 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.250 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~385 kcal</div></div>
+        <div class="meal-body"><span class="name">Egg muffin yến mạch</span>• Yến mạch 40g + 3 trứng + rau bina + phô mai ít béo → nướng khuôn<br>• 1 hộp sữa chua không đường ăn kèm</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~535 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm + Canh chua cá hồi miền Nam + Rau xào</span>• Cơm 150g<br>• Canh chua cá hồi 120g kiểu miền Nam<br>• Đậu bắp + rau dền xào 200g</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~330 kcal</div></div>
+        <div class="meal-body"><span class="name">Tôm hấp + Salad Địa Trung Hải</span>• Tôm hấp 130g<br>• Salad dưa leo + cà chua + hành tây + bơ 25g + dầu olive chanh<br><span class="note">❌ Không cơm tối</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.250 kcal</strong></span><span>💪 Protein: <strong>~92g</strong></span><span>🌾 Carb: <strong>~120g</strong></span><span>🥑 Fat: <strong>~30g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 15/05 T6 ĐI BỘ -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">15</div><div class="day-info"><div class="day-name">Thứ Sáu <span class="badge-walk">🚶 Đi bộ 7.000 bước</span></div><div class="day-date">15 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.200 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~350 kcal</div></div>
+        <div class="meal-body"><span class="name">Cháo yến mạch tôm xay</span>• Yến mạch 55g + tôm xay 70g + 1 trứng thả vào<br>• Hành lá tiêu</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~505 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm + Tôm rang sả + Rau cải + Canh bí</span>• Cơm 140g<br>• Tôm rang sả ớt 150g + rau cải xanh luộc 200g<br>• Canh bí đao nấu tôm khô</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~345 kcal</div></div>
+        <div class="meal-body"><span class="name">Thịt lợn xào cải thảo + Trứng luộc + Súp</span>• Thịt lợn thăn xào cải thảo nấm kim châm 110g<br>• 1 trứng luộc + súp rau củ nhẹ<br><span class="note">❌ Không cơm tối</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.200 kcal</strong></span><span>💪 Protein: <strong>~80g</strong></span><span>🌾 Carb: <strong>~114g</strong></span><span>🥑 Fat: <strong>~28g</strong></span></div>
+    </div>
+  </div>
+
+</div><!-- /w2 -->
+
+<!-- ===== WEEK 3 ===== -->
+<div class="panel" id="w3">
+
+  <!-- 16/05 T7 TẬP -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">16</div><div class="day-info"><div class="day-name">Thứ Bảy <span class="badge-tap">🏋️ Kháng lực + 5.000 bước</span></div><div class="day-date">16 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.250 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~380 kcal</div></div>
+        <div class="meal-body"><span class="name">Yến mạch nấu sữa + Trứng luộc + Bơ</span>• Yến mạch 60g nấu sữa không đường<br>• 2 trứng luộc + 1/2 quả bơ nhỏ rắc muối tiêu</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~535 kcal</div></div>
+        <div class="meal-body"><span class="name">Bowl gạo lứt + Cá hồi nướng + Bơ + Rau sống</span>• Gạo lứt 130g<br>• Cá hồi nướng 110g + bơ 30g<br>• Xà lách + cà chua bi + sốt dầu olive mù tạt chanh</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~335 kcal</div></div>
+        <div class="meal-body"><span class="name">Tôm hấp tỏi sả + Canh rau củ</span>• Tôm hấp 150g với tỏi sả<br>• Canh bầu su su nấu thịt bằm + rau cải xào nhẹ 150g<br><span class="note">❌ Không cơm tối</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.250 kcal</strong></span><span>💪 Protein: <strong>~88g</strong></span><span>🌾 Carb: <strong>~118g</strong></span><span>🥑 Fat: <strong>~36g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 17/05 CN ĐI BỘ -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">17</div><div class="day-info"><div class="day-name">Chủ Nhật <span class="badge-walk">🚶 Đi bộ 7.000 bước</span></div><div class="day-date">17 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.200 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~355 kcal</div></div>
+        <div class="meal-body"><span class="name">Bánh mì ngũ cốc + Trứng ốp la + Sữa chua + Óc chó</span>• 1 lát bánh mì ngũ cốc nướng<br>• 2 trứng ốp la + sữa chua Hy Lạp 100g + 5 hạt óc chó</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~505 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm + Thịt lợn rim gừng mắm + Rau muống + Canh chua</span>• Cơm 140g<br>• Thịt lợn thăn rim gừng mắm 100g<br>• Rau muống xào tỏi 200g + canh chua nhẹ</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~340 kcal</div></div>
+        <div class="meal-body"><span class="name">Cá hồi hấp chanh sả + Rau củ hấp</span>• Cá hồi hấp chanh sả 90g<br>• Bông cải xanh + cà rốt hấp 200g<br><span class="note">❌ Không cơm tối</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.200 kcal</strong></span><span>💪 Protein: <strong>~78g</strong></span><span>🌾 Carb: <strong>~116g</strong></span><span>🥑 Fat: <strong>~30g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 18/05 T2 ĐI BỘ -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">18</div><div class="day-info"><div class="day-name">Thứ Hai <span class="badge-walk">🚶 Đi bộ 7.000 bước</span></div><div class="day-date">18 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.200 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~350 kcal</div></div>
+        <div class="meal-body"><span class="name">Overnight oats + Hạt chia + Chuối</span>• Yến mạch 55g ngâm sữa chua + hạt chia + chuối 1/2</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~510 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm + Canh cua rau đay + Thịt lợn kho tiêu</span>• Cơm 140g<br>• Canh cua rau đay mồng tơi + thịt lợn kho tiêu 100g<br>• Dưa leo tươi</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~340 kcal</div></div>
+        <div class="meal-body"><span class="name">Trứng hấp tôm kiểu Nhật + Bok choy luộc</span>• 2 trứng hấp + tôm 70g<br>• Bok choy luộc 250g chấm nước tương<br><span class="note">❌ Không cơm tối</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.200 kcal</strong></span><span>💪 Protein: <strong>~80g</strong></span><span>🌾 Carb: <strong>~112g</strong></span><span>🥑 Fat: <strong>~28g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 19/05 T3 TẬP -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">19</div><div class="day-info"><div class="day-name">Thứ Ba <span class="badge-tap">🏋️ Kháng lực + 5.000 bước</span></div><div class="day-date">19 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.250 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~395 kcal</div></div>
+        <div class="meal-body"><span class="name">Cháo yến mạch cá hồi kiểu Hàn</span>• Yến mạch 60g + cá hồi flake 80g + 1 trứng<br>• Mè rang + rong biển + vài giọt dầu mè</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~525 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm + Thịt lợn cuộn nấm hấp + Cải bắp luộc</span>• Cơm 150g<br>• Thịt lợn mỏng cuộn nấm hương hấp 120g<br>• Nước chấm gừng + cải bắp luộc 200g</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~330 kcal</div></div>
+        <div class="meal-body"><span class="name">Cá hồi sốt miso nướng + Rau hấp + Soup miso</span>• Cá hồi 100g ướp miso trắng nướng lò<br>• Bông cải + nấm shiitake hấp 200g + soup miso nhỏ<br><span class="note">❌ Không cơm tối</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.250 kcal</strong></span><span>💪 Protein: <strong>~88g</strong></span><span>🌾 Carb: <strong>~124g</strong></span><span>🥑 Fat: <strong>~34g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 20/05 T4 ĐI BỘ -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">20</div><div class="day-info"><div class="day-name">Thứ Tư <span class="badge-walk">🚶 Đi bộ 7.000 bước</span></div><div class="day-date">20 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.200 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~350 kcal</div></div>
+        <div class="meal-body"><span class="name">Trứng bác ớt chuông + Yến mạch savory</span>• 2 trứng bác ớt chuông<br>• Yến mạch 50g nấu nước nêm muối nhẹ + rau sống ăn kèm</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~505 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm + Tôm hấp gừng + Canh bí + Đậu cô ve</span>• Cơm 140g<br>• Tôm hấp gừng 150g + canh bí đỏ thịt bằm<br>• Đậu cô ve luộc chấm mắm</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~345 kcal</div></div>
+        <div class="meal-body"><span class="name">Thịt lợn xào cải thảo nấm + Canh + Trứng luộc</span>• Thịt lợn xào cải thảo + nấm 100g<br>• Canh rau ngót + 1 trứng luộc<br><span class="note">❌ Không cơm tối</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.200 kcal</strong></span><span>💪 Protein: <strong>~82g</strong></span><span>🌾 Carb: <strong>~112g</strong></span><span>🥑 Fat: <strong>~28g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 21/05 T5 TẬP -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">21</div><div class="day-info"><div class="day-name">Thứ Năm <span class="badge-tap">🏋️ Kháng lực + 5.000 bước</span></div><div class="day-date">21 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.250 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~385 kcal</div></div>
+        <div class="meal-body"><span class="name">Pancake yến mạch + Sữa chua</span>• Yến mạch xay 55g + 2 trứng chiên ít dầu<br>• Sữa chua không đường 80g ăn kèm</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~535 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm + Cá hồi sốt chanh bơ nướng + Rau củ nướng</span>• Cơm 150g<br>• Cá hồi 120g nướng sốt chanh bơ lạt tỏi<br>• Ớt chuông + cà tím nướng 200g</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~330 kcal</div></div>
+        <div class="meal-body"><span class="name">Tôm xào sả ớt + Rau cải + Canh mồng tơi</span>• Tôm sú xào sả ớt 150g<br>• Rau cải xào tỏi 180g + canh mồng tơi nhẹ<br><span class="note">❌ Không cơm tối</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.250 kcal</strong></span><span>💪 Protein: <strong>~90g</strong></span><span>🌾 Carb: <strong>~120g</strong></span><span>🥑 Fat: <strong>~34g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 22/05 T6 ĐI BỘ -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">22</div><div class="day-info"><div class="day-name">Thứ Sáu <span class="badge-walk">🚶 Đi bộ 7.000 bước</span></div><div class="day-date">22 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.200 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~350 kcal</div></div>
+        <div class="meal-body"><span class="name">Cháo yến mạch thịt lợn bằm</span>• Yến mạch 55g + thịt lợn bằm 80g + 1 trứng thả vào<br>• Hành lá gừng tiêu</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~505 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm + Canh chua tôm khóm + Mồng tơi xào</span>• Cơm 140g<br>• Canh chua tôm nấu khóm + mồng tơi xào tỏi 200g<br>• Dưa leo tươi</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~345 kcal</div></div>
+        <div class="meal-body"><span class="name">Salad tôm + Trứng luộc + Bơ</span>• Tôm luộc 100g + xà lách + bơ + dưa chuột + cà chua + dầu olive chanh<br>• 2 trứng luộc<br><span class="note">❌ Không cơm tối</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.200 kcal</strong></span><span>💪 Protein: <strong>~80g</strong></span><span>🌾 Carb: <strong>~114g</strong></span><span>🥑 Fat: <strong>~30g</strong></span></div>
+    </div>
+  </div>
+
+</div><!-- /w3 -->
+
+<!-- ===== WEEK 4 ===== -->
+<div class="panel" id="w4">
+
+  <!-- 23/05 T7 TẬP -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">23</div><div class="day-info"><div class="day-name">Thứ Bảy <span class="badge-tap">🏋️ Kháng lực + 5.000 bước</span></div><div class="day-date">23 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.250 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~390 kcal</div></div>
+        <div class="meal-body"><span class="name">Yến mạch nấu sữa + Trứng luộc + Hạt chia</span>• Yến mạch 60g nấu sữa + chuối 1/2 + hạt chia 1 thìa<br>• 2 trứng luộc</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~530 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm + Thịt kho tàu nhẹ + Rau muống + Canh chua</span>• Cơm 150g<br>• Thịt lợn 90g + trứng 1 quả kho nước dừa ít đường<br>• Rau muống xào + canh chua nhẹ</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~330 kcal</div></div>
+        <div class="meal-body"><span class="name">Cá hồi hấp sả + Bông cải + Nấm hấp</span>• Cá hồi hấp sả 100g<br>• Bông cải + nấm hấp 200g + chấm mắm chanh tỏi<br><span class="note">❌ Không cơm tối</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.250 kcal</strong></span><span>💪 Protein: <strong>~88g</strong></span><span>🌾 Carb: <strong>~118g</strong></span><span>🥑 Fat: <strong>~34g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 24/05 CN ĐI BỘ -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">24</div><div class="day-info"><div class="day-name">Chủ Nhật <span class="badge-walk">🚶 Đi bộ 7.000 bước</span></div><div class="day-date">24 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.200 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~355 kcal</div></div>
+        <div class="meal-body"><span class="name">Trứng ốp la + Bánh mì đen + Sữa chua + Óc chó</span>• 2 trứng ốp la + 1 lát bánh mì đen<br>• Sữa chua không đường 100g + 5 hạt óc chó</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~505 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm + Tôm rang sả + Đậu bắp + Canh bí</span>• Cơm 140g<br>• Tôm rang sả ớt 150g + đậu bắp luộc 150g<br>• Canh bí đao nấu tôm khô</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~340 kcal</div></div>
+        <div class="meal-body"><span class="name">Thịt lợn xào cải thảo + Súp rau + Trứng luộc</span>• Thịt lợn thăn xào cải thảo 100g + súp rau củ nhẹ<br>• 1 trứng luộc<br><span class="note">❌ Không cơm tối</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.200 kcal</strong></span><span>💪 Protein: <strong>~78g</strong></span><span>🌾 Carb: <strong>~114g</strong></span><span>🥑 Fat: <strong>~28g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 25/05 T2 ĐI BỘ -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">25</div><div class="day-info"><div class="day-name">Thứ Hai <span class="badge-walk">🚶 Đi bộ 7.000 bước</span></div><div class="day-date">25 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.200 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~350 kcal</div></div>
+        <div class="meal-body"><span class="name">Overnight oats + Dâu tây + Trứng luộc</span>• Yến mạch 55g ngâm sữa tươi không đường + hạt chia + dâu tây 50g<br>• 1 trứng luộc</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~510 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm + Cá hồi áp chảo tỏi chanh + Rau cải + Canh</span>• Cơm 140g<br>• Cá hồi áp chảo tỏi chanh 110g + rau cải xanh luộc 200g<br>• Canh rau củ</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~340 kcal</div></div>
+        <div class="meal-body"><span class="name">Lẩu thái nhẹ</span>• Nước dùng cà chua sả ớt mắm + tôm 100g + nấm + rau cải<br><span class="note">❌ Không bún, không cơm</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.200 kcal</strong></span><span>💪 Protein: <strong>~80g</strong></span><span>🌾 Carb: <strong>~112g</strong></span><span>🥑 Fat: <strong>~30g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 26/05 T3 TẬP -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">26</div><div class="day-info"><div class="day-name">Thứ Ba <span class="badge-tap">🏋️ Kháng lực + 5.000 bước</span></div><div class="day-date">26 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.250 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~390 kcal</div></div>
+        <div class="meal-body"><span class="name">Egg muffin yến mạch</span>• Yến mạch 40g + 3 trứng + rau bina → nướng khuôn muffin<br>• Sữa chua không đường ăn kèm</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~530 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm gạo lứt + Tôm hấp gừng + Bông cải xào + Canh</span>• Cơm gạo lứt 150g<br>• Tôm sú hấp gừng 150g + bông cải xanh xào tỏi 200g<br>• Canh rau ngót</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~330 kcal</div></div>
+        <div class="meal-body"><span class="name">Salad cá hồi flake + Bơ</span>• Cá hồi flake 80g + xà lách + cà chua bi + bơ 30g<br>• Sốt dầu olive chanh<br><span class="note">❌ Không cơm tối</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.250 kcal</strong></span><span>💪 Protein: <strong>~90g</strong></span><span>🌾 Carb: <strong>~120g</strong></span><span>🥑 Fat: <strong>~34g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 27/05 T4 ĐI BỘ -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">27</div><div class="day-info"><div class="day-name">Thứ Tư <span class="badge-walk">🚶 Đi bộ 7.000 bước</span></div><div class="day-date">27 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.200 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~350 kcal</div></div>
+        <div class="meal-body"><span class="name">Cháo yến mạch tôm xay mặn</span>• Yến mạch 55g + tôm xay 70g + 1 trứng + hành tiêu ngò gai</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~505 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm + Thịt lợn kho tiêu + Mồng tơi xào + Canh bầu</span>• Cơm 140g<br>• Thịt lợn kho tiêu 110g + mồng tơi xào tỏi 200g<br>• Canh bầu nấu tôm khô</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~345 kcal</div></div>
+        <div class="meal-body"><span class="name">Bún thịt lợn nạc trộn lite</span>• Bún tươi 80g + thịt lợn xào sả ớt 90g<br>• Rau sống + đậu phộng rang 10g + nước chấm chanh mắm<br><span class="note">⚠️ Bữa tối đặc biệt — bù trừ cắt cơm trưa</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.200 kcal</strong></span><span>💪 Protein: <strong>~80g</strong></span><span>🌾 Carb: <strong>~116g</strong></span><span>🥑 Fat: <strong>~28g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 28/05 T5 TẬP -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">28</div><div class="day-info"><div class="day-name">Thứ Năm <span class="badge-tap">🏋️ Kháng lực + 5.000 bước</span></div><div class="day-date">28 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.250 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~385 kcal</div></div>
+        <div class="meal-body"><span class="name">Yến mạch nấu sữa + Trứng luộc + Bơ</span>• Yến mạch 60g nấu sữa không đường<br>• 2 trứng luộc + bơ 30g rắc muối tiêu</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~535 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm + Canh chua cá hồi + Rau dền xào</span>• Cơm 150g<br>• Canh chua cá hồi 120g kiểu miền Nam<br>• Đậu cô ve + rau dền xào 200g</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~330 kcal</div></div>
+        <div class="meal-body"><span class="name">Tôm hấp + Salad Địa Trung Hải</span>• Tôm hấp 150g + salad dưa leo cà chua hành tây bơ 25g<br>• Chanh dầu olive<br><span class="note">❌ Không cơm tối</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.250 kcal</strong></span><span>💪 Protein: <strong>~92g</strong></span><span>🌾 Carb: <strong>~122g</strong></span><span>🥑 Fat: <strong>~34g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 29/05 T6 ĐI BỘ -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">29</div><div class="day-info"><div class="day-name">Thứ Sáu <span class="badge-walk">🚶 Đi bộ 7.000 bước</span></div><div class="day-date">29 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.200 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~350 kcal</div></div>
+        <div class="meal-body"><span class="name">Trứng chiên rau bina + Bánh mì ngũ cốc + Sữa chua</span>• 2 trứng chiên rau bina + 1 lát bánh mì ngũ cốc<br>• Sữa chua Hy Lạp 100g</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~510 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm + Tôm rang sả + Canh rau ngót + Dưa leo</span>• Cơm 140g<br>• Tôm rang sả ớt 150g + canh rau ngót thịt bằm<br>• Dưa leo tươi</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~340 kcal</div></div>
+        <div class="meal-body"><span class="name">Thịt lợn kho gừng + Rau cải xào + Soup miso</span>• Thịt lợn thăn kho gừng 100g + rau cải xào 180g<br>• Soup miso đậu hũ rong biển<br><span class="note">❌ Không cơm tối</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.200 kcal</strong></span><span>💪 Protein: <strong>~80g</strong></span><span>🌾 Carb: <strong>~114g</strong></span><span>🥑 Fat: <strong>~28g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 30/05 T7 TẬP -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">30</div><div class="day-info"><div class="day-name">Thứ Bảy <span class="badge-tap">🏋️ Kháng lực + 5.000 bước</span></div><div class="day-date">30 / 05 / 2026</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.250 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~390 kcal</div></div>
+        <div class="meal-body"><span class="name">Cháo yến mạch trứng kiểu Nhật</span>• Yến mạch 60g + 2 trứng lòng đào<br>• Rong biển + mè rang + dầu mè + nước tương</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~530 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm + Thịt lợn cuộn nấm hấp + Cải bắp luộc</span>• Cơm 150g<br>• Thịt lợn mỏng cuộn nấm hương hấp 120g<br>• Cải bắp luộc 200g + nước chấm gừng chanh mắm</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~330 kcal</div></div>
+        <div class="meal-body"><span class="name">Cá hồi teriyaki + Bông cải + Soup miso</span>• Cá hồi sốt teriyaki nhẹ 100g + bông cải + nấm hấp 200g<br>• Soup miso nhỏ<br><span class="note">❌ Không cơm tối</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.250 kcal</strong></span><span>💪 Protein: <strong>~88g</strong></span><span>🌾 Carb: <strong>~122g</strong></span><span>🥑 Fat: <strong>~34g</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 31/05 CN ĐI BỘ -->
+  <div class="day" onclick="toggle(this)">
+    <div class="day-head">
+      <div class="day-left"><div class="day-num">31</div><div class="day-info"><div class="day-name">Chủ Nhật 🎉 <span class="badge-walk">🚶 Đi bộ 7.000 bước</span></div><div class="day-date">31 / 05 / 2026 — Ngày cuối tháng!</div></div></div>
+      <div class="day-right"><div class="cal-badge">~1.200 kcal</div><div class="arrow">▼</div></div>
+    </div>
+    <div class="day-body">
+      <div class="meal sang"><div class="meal-head"><div class="meal-label">🌅 Bữa sáng</div><div class="meal-kcal">~355 kcal</div></div>
+        <div class="meal-body"><span class="name">Trứng Benedict lite</span>• Bánh mì đen 1 lát + 2 trứng chần + cá hồi hun khói 50g<br>• Cải chíp xào nhẹ + sốt sữa chua chanh mù tạt</div></div>
+      <div class="meal trua"><div class="meal-head"><div class="meal-label">☀️ Bữa trưa</div><div class="meal-kcal">~505 kcal</div></div>
+        <div class="meal-body"><span class="name">Cơm + Tôm air fryer + Canh bí + Rau xào</span>• Cơm 140g<br>• Tôm chiên không dầu (air fryer) lăn bột mỏng 150g<br>• Canh bí đao + rau xào mix 3 loại</div></div>
+      <div class="meal toi"><div class="meal-head"><div class="meal-label">🌙 Bữa tối</div><div class="meal-kcal">~340 kcal</div></div>
+        <div class="meal-body"><span class="name">Cháo yến mạch mặn nhẹ (kết thúc tháng nhẹ nhàng)</span>• Yến mạch 50g + thịt bằm 60g + 1 trứng + hành phi tiêu<br>• Rau xà lách ăn kèm<br><span class="note">❌ Không cơm tối</span></div></div>
+      <div class="macro-bar"><span>🔥 Tổng: <strong>~1.200 kcal</strong></span><span>💪 Protein: <strong>~80g</strong></span><span>🌾 Carb: <strong>~116g</strong></span><span>🥑 Fat: <strong>~28g</strong></span></div>
+    </div>
+  </div>
+
+</div><!-- /w4 -->
+
+  <hr>
+
+  <div class="tips-title">💡 Nguyên tắc vàng cả tháng</div>
+  <div class="tips-sub">Tuân thủ những điều này để đạt kết quả tốt nhất</div>
+  <div class="tips-grid">
+    <div class="tip"><div class="tip-icon">🍚</div><div class="tip-title">Bữa tối không cơm</div><div class="tip-text">Hầu hết bữa tối tập trung protein + rau xanh. Nếu quá đói, thêm 1/2 bát cháo yến mạch loãng (~80 kcal).</div></div>
+    <div class="tip"><div class="tip-icon">💪</div><div class="tip-title">Ngày tập — ăn đủ</div><div class="tip-text">Bữa trưa đủ cơm 150g. Ăn trước hoặc sau tập 1–2 tiếng để có năng lượng và phục hồi cơ tốt nhất.</div></div>
+    <div class="tip"><div class="tip-icon">💧</div><div class="tip-title">Nước & điện giải</div><div class="tip-text">2–2.5L nước/ngày. Sau tập: uống nước dừa tươi 200ml thay nước thể thao có đường.</div></div>
+    <div class="tip"><div class="tip-icon">🥚</div><div class="tip-title">Protein mỗi bữa</div><div class="tip-text">Mục tiêu 25–40g protein/bữa từ trứng, cá, tôm, thịt. Giúp no lâu và bảo toàn cơ bắp khi giảm cân.</div></div>
+    <div class="tip"><div class="tip-icon">🍳</div><div class="tip-title">Meal prep cuối tuần</div><div class="tip-text">Luộc/hấp sẵn tôm, cá, trứng để trong tủ lạnh. Giúp bám thực đơn cả tuần dễ dàng hơn.</div></div>
+    <div class="tip"><div class="tip-icon">📊</div><div class="tip-title">Theo dõi tiến độ</div><div class="tip-text">Cân sáng thứ Hai hàng tuần (sau vệ sinh, trước ăn). Cân nặng dao động ±0.5–1 kg/ngày là bình thường.</div></div>
+  </div>
+
+</div><!-- /main -->
+
+<script>
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+  function toggle(card) {
+    card.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
